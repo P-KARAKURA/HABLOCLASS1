@@ -1,0 +1,217 @@
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #12193B;
+  --card: #1B234F;
+  --card-border: #2E3B75;
+  --text: #F3F0E7;
+  --text-muted: #9AA3D1;
+  --accent: #F2A93B;
+  --accent-soft: #3B3560;
+  --error: #E8664F;
+  --success: #6FC08C;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+ /* ---------- Course Modules ---------- */
+
+.course-modules {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.course-link {
+  display: block;
+  padding: 14px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.12s ease, transform 0.05s ease;
+}
+
+.course-link:hover {
+  background: #46407A;
+}
+
+.course-link:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Card ---------- */
+.login-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 36px 28px 28px;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: var(--accent);
+}
+
+.brand-tagline {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ---------- Fields ---------- */
+.field-label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+#student-id {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding: 8px 2px;
+  margin-bottom: 22px;
+  outline: none;
+}
+
+#student-id:focus {
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Code display (dots) ---------- */
+.code-display {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 4px 0 24px;
+}
+
+.code-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--text-muted);
+  background: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.code-dot[data-filled="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Keypad ---------- */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.key {
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--accent-soft);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.05s ease;
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.digit:hover {
+  background: #46407A;
+}
+
+.key-clear,
+.key-delete {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.key-clear:hover,
+.key-delete:hover {
+  color: var(--text);
+}
+
+/* ---------- Message ---------- */
+.message {
+  min-height: 18px;
+  text-align: center;
+  font-size: 13px;
+  margin: 0 0 18px;
+  color: var(--error);
+}
+
+.message[data-type="success"] {
+  color: var(--success);
+}
+
+/* ---------- Continue button ---------- */
+.continue-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #14193B;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.12s ease;
+}
+
+.continue-btn:hover {
+  opacity: 0.9;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 400px) {
+  .login-card {
+    padding: 28px 20px 22px;
+  }
+}

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>HABLOCLASS — Student Login</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---------- Tokens ---------- */
+:root {
+  --bg: #12193B;
+  --card: #1B234F;
+  --card-border: #2E3B75;
+  --text: #F3F0E7;
+  --text-muted: #9AA3D1;
+  --accent: #F2A93B;
+  --accent-soft: #3B3560;
+  --error: #E8664F;
+  --success: #6FC08C;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+ /* ---------- Course Modules ---------- */
+
+.course-modules {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.course-link {
+  display: block;
+  padding: 14px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.12s ease, transform 0.05s ease;
+}
+
+.course-link:hover {
+  background: #46407A;
+}
+
+.course-link:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Card ---------- */
+.login-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 36px 28px 28px;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: var(--accent);
+}
+
+.brand-tagline {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ---------- Fields ---------- */
+.field-label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+#student-id {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding: 8px 2px;
+  margin-bottom: 22px;
+  outline: none;
+}
+
+#student-id:focus {
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Code display (dots) ---------- */
+.code-display {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 4px 0 24px;
+}
+
+.code-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--text-muted);
+  background: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.code-dot[data-filled="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Keypad ---------- */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.key {
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--accent-soft);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.05s ease;
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.digit:hover {
+  background: #46407A;
+}
+
+.key-clear,
+.key-delete {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.key-clear:hover,
+.key-delete:hover {
+  color: var(--text);
+}
+
+/* ---------- Message ---------- */
+.message {
+  min-height: 18px;
+  text-align: center;
+  font-size: 13px;
+  margin: 0 0 18px;
+  color: var(--error);
+}
+
+.message[data-type="success"] {
+  color: var(--success);
+}
+
+/* ---------- Continue button ---------- */
+.continue-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #14193B;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.12s ease;
+}
+
+.continue-btn:hover {
+  opacity: 0.9;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 400px) {
+  .login-card {
+    padding: 28px 20px 22px;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       STUDENT LOGIN
+  ========================================================== -->
+
+  <main class="login-card">
+
+    <header class="brand">
+
+      <h1 class="brand-name">
+        HABLOCLASS
+      </h1>
+
+      <p class="brand-tagline">
+        Speak, connect and grow.
+      </p>
+
+    </header>
+
+
+    <form id="login-form" autocomplete="off">
+
+      <!-- Student ID -->
+
+      <label class="field-label" for="student-id">
+        Student ID
+      </label>
+
+      <input
+        type="text"
+        id="student-id"
+        placeholder="e.g. 0102601"
+        maxlength="7"
+        inputmode="numeric"
+      />
+
+
+      <!-- Personal Code -->
+
+      <label class="field-label" for="code-display">
+        Personal code
+      </label>
+
+      <div class="code-display" id="code-display">
+
+        <span
+          class="code-dot"
+          data-filled="false"
+        ></span>
+
+        <span
+          class="code-dot"
+          data-filled="false"
+        ></span>
+
+        <span
+          class="code-dot"
+          data-filled="false"
+        ></span>
+
+        <span
+          class="code-dot"
+          data-filled="false"
+        ></span>
+
+      </div>
+
+
+      <!-- Keypad -->
+
+      <div class="keypad">
+
+        <button type="button" class="key digit">1</button>
+        <button type="button" class="key digit">2</button>
+        <button type="button" class="key digit">3</button>
+
+        <button type="button" class="key digit">4</button>
+        <button type="button" class="key digit">5</button>
+        <button type="button" class="key digit">6</button>
+
+        <button type="button" class="key digit">7</button>
+        <button type="button" class="key digit">8</button>
+        <button type="button" class="key digit">9</button>
+
+        <button
+          type="button"
+          class="key key-clear"
+          id="clear-btn"
+        >
+          C
+        </button>
+
+        <button type="button" class="key digit">0</button>
+
+        <button
+          type="button"
+          class="key key-delete"
+          id="delete-btn"
+        >
+          ⌫
+        </button>
+
+      </div>
+
+
+      <!-- Message -->
+
+      <p
+        class="message"
+        id="message"
+        role="status"
+      ></p>
+
+
+      <!-- Continue -->
+
+      <button
+        type="submit"
+        class="continue-btn"
+        id="continue-btn"
+      >
+        Continue
+      </button>
+
+    </form>
+
+  </main>
+
+
+  <!-- =========================================================
+       STUDENT DASHBOARD
+  ========================================================== -->
+
+  <section
+    id="student-dashboard"
+    style="display: none;"
+  >
+
+    <h1>
+      Student Dashboard
+    </h1>
+
+
+    <!-- Student Information -->
+
+    <div>
+
+      <p>
+        Student Name:
+        <strong id="dashboard-name">—</strong>
+      </p>
+
+      <p>
+        Student ID:
+        <strong id="dashboard-id">—</strong>
+      </p>
+
+      <p>
+        Cohort:
+        <strong id="dashboard-cohort">—</strong>
+      </p>
+
+      <p>
+        Year:
+        <strong id="dashboard-year">—</strong>
+      </p>
+
+    </div>
+
+
+    <hr>
+
+
+    <!-- Current Course -->
+
+    <h2>
+      Current Course
+    </h2>
+
+    <p>
+      Course:
+      <strong>English &amp; Communication</strong>
+    </p>
+
+    <p>
+      Level:
+      <strong>Beginner</strong>
+    </p>
+
+    <p>
+      Progress:
+      <strong>0%</strong>
+    </p>
+
+
+    <hr>
+
+
+    <!-- Course Modules -->
+
+    <h2>
+      Course Modules
+    </h2>
+
+    <div class="course-modules">
+
+      <a href="#" class="course-link">
+        English Foundations
+      </a>
+
+      <a href="#" class="course-link">
+        Speaking Practice
+      </a>
+
+      <a href="#" class="course-link">
+        Reading &amp; Comprehension
+      </a>
+
+      <a href="#" class="course-link">
+        Vocabulary
+      </a>
+
+      <a href="#" class="course-link">
+        Discussion &amp; Debate
+      </a>
+
+      <a href="#" class="course-link">
+        Public Speaking
+      </a>
+
+      <a href="#" class="course-link">
+        Coding &amp; Digital Skills
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- JavaScript -->
+
+  <script src="script.js">/* ============================================================
+   HABLOCLASS — Student Login & Dashboard
+   ============================================================ */
+
+
+/* ============================================================
+   TEST STUDENT DATA
+   ============================================================ */
+
+const students = [
+
+  {
+    id: "0102601",
+    code: "1234",
+    name: "Olivier GANISHURI",
+    cohort: "01",
+    year: "2026"
+  },
+
+  {
+    id: "0202607",
+    code: "4821",
+    name: "MUSERUKA AIME SERGE",
+    cohort: "02",
+    year: "2026"
+  },
+
+  {
+    id: "0302610",
+    code: "0784",
+    name: "CHRISTINE BORA",
+    cohort: "03",
+    year: "2026"
+  },
+  {
+    id: "0302611",
+    code: "0784",
+    name: "SAMUEL",
+    cohort: "03",
+    year: "2026"
+  },
+
+  {
+    id: "0302612",
+    code: "0784",
+    name: "BARAKA EVAN",
+    cohort: "03",
+    year: "2026"
+  }
+
+];
+
+
+/* ============================================================
+   LOGIN ELEMENTS
+   ============================================================ */
+
+const studentIdInput =
+  document.getElementById("student-id");
+
+const codeDots =
+  document.querySelectorAll(".code-dot");
+
+const digitButtons =
+  document.querySelectorAll(".digit");
+
+const clearBtn =
+  document.getElementById("clear-btn");
+
+const deleteBtn =
+  document.getElementById("delete-btn");
+
+const loginForm =
+  document.getElementById("login-form");
+
+const messageEl =
+  document.getElementById("message");
+
+
+/* ============================================================
+   DASHBOARD ELEMENTS
+   ============================================================ */
+
+const loginPage =
+  document.querySelector(".login-card");
+
+const dashboard =
+  document.getElementById("student-dashboard");
+
+const dashboardName =
+  document.getElementById("dashboard-name");
+
+const dashboardId =
+  document.getElementById("dashboard-id");
+
+const dashboardCohort =
+  document.getElementById("dashboard-cohort");
+
+const dashboardYear =
+  document.getElementById("dashboard-year");
+
+
+/* ============================================================
+   STATE
+   ============================================================ */
+
+let personalCode = "";
+
+
+/* ============================================================
+   STUDENT ID INPUT
+   ============================================================ */
+
+studentIdInput.addEventListener("input", () => {
+
+  studentIdInput.value =
+    studentIdInput.value.replace(/\D/g, "");
+
+});
+
+
+/* ============================================================
+   KEYPAD — DIGITS
+   ============================================================ */
+
+digitButtons.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    if (personalCode.length < 4) {
+
+      personalCode +=
+        button.textContent.trim();
+
+      updateCodeDots();
+
+    }
+
+  });
+
+});
+
+
+/* ============================================================
+   CLEAR BUTTON
+   ============================================================ */
+
+clearBtn.addEventListener("click", () => {
+
+  personalCode = "";
+
+  updateCodeDots();
+
+});
+
+
+/* ============================================================
+   DELETE BUTTON
+   ============================================================ */
+
+deleteBtn.addEventListener("click", () => {
+
+  personalCode =
+    personalCode.slice(0, -1);
+
+  updateCodeDots();
+
+});
+
+
+/* ============================================================
+   UPDATE CODE DOTS
+   ============================================================ */
+
+function updateCodeDots() {
+
+  codeDots.forEach((dot, index) => {
+
+    if (index < personalCode.length) {
+
+      dot.setAttribute(
+        "data-filled",
+        "true"
+      );
+
+    } else {
+
+      dot.setAttribute(
+        "data-filled",
+        "false"
+      );
+
+    }
+
+  });
+
+}
+
+
+/* ============================================================
+   SHOW MESSAGE
+   ============================================================ */
+
+function showMessage(text, type) {
+
+  messageEl.textContent =
+    text;
+
+  messageEl.setAttribute(
+    "data-type",
+    type
+  );
+
+}
+
+
+/* ============================================================
+   LOGIN
+   ============================================================ */
+
+loginForm.addEventListener("submit", (event) => {
+
+  event.preventDefault();
+
+
+  /* ----------------------------------------------------------
+     Get Student ID
+  ---------------------------------------------------------- */
+
+  const studentId =
+    studentIdInput.value.trim();
+
+
+  /* ----------------------------------------------------------
+     Check Student ID
+  ---------------------------------------------------------- */
+
+  if (studentId === "") {
+
+    showMessage(
+      "Please enter your student ID.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  /* ----------------------------------------------------------
+     Check Student ID Length
+  ---------------------------------------------------------- */
+
+  if (studentId.length !== 7) {
+
+    showMessage(
+      "Student ID must contain 7 digits.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  /* ----------------------------------------------------------
+     Check Personal Code
+  ---------------------------------------------------------- */
+
+  if (personalCode.length !== 4) {
+
+    showMessage(
+      "Please enter your 4-digit personal code.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  /* ----------------------------------------------------------
+     Find Matching Student
+  ---------------------------------------------------------- */
+
+  const matchedStudent =
+    students.find((student) => {
+
+      return (
+        student.id === studentId &&
+        student.code === personalCode
+      );
+
+    });
+
+
+  /* ==========================================================
+     SUCCESSFUL LOGIN
+  ========================================================== */
+
+  if (matchedStudent) {
+
+    showMessage(
+      `Welcome, ${matchedStudent.name}!`,
+      "success"
+    );
+
+
+    /* --------------------------------------------------------
+       Put Student Information into Dashboard
+    -------------------------------------------------------- */
+
+    dashboardName.textContent =
+      matchedStudent.name;
+
+    dashboardId.textContent =
+      matchedStudent.id;
+
+    dashboardCohort.textContent =
+      matchedStudent.cohort;
+
+    dashboardYear.textContent =
+      matchedStudent.year;
+
+
+    /* --------------------------------------------------------
+       Hide Login
+    -------------------------------------------------------- */
+
+    loginPage.style.display =
+      "none";
+
+
+    /* --------------------------------------------------------
+       Show Dashboard
+    -------------------------------------------------------- */
+
+    dashboard.style.display =
+      "block";
+
+  }
+
+
+  /* ==========================================================
+     FAILED LOGIN
+  ========================================================== */
+
+  else {
+
+    showMessage(
+      "Incorrect Student ID or personal code.",
+      "error"
+    );
+
+  }
+
+});</script>
+
+</body>
+</html>

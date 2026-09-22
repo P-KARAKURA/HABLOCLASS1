@@ -27,8 +27,23 @@ const students = [
 
   {
     id: "0302610",
-    code: "7359",
-    name: "JOHN DOE",
+    code: "0784",
+    name: "CHRISTINE BORA",
+    cohort: "03",
+    year: "2026"
+  },
+  {
+    id: "0302611",
+    code: "0784",
+    name: "SAMUEL",
+    cohort: "03",
+    year: "2026"
+  },
+
+  {
+    id: "0302612",
+    code: "0784",
+    name: "BARAKA EVAN",
     cohort: "03",
     year: "2026"
   }

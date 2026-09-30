@@ -1,23 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>HABLOCLASS — Student Login</title>
 
+
+  <!-- Google Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Main stylesheet -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+
 </head>
 
+
 <body>
+
 
   <!-- =========================================================
        STUDENT LOGIN
@@ -38,13 +62,21 @@
     </header>
 
 
-    <form id="login-form" autocomplete="off">
+    <form
+      id="login-form"
+      autocomplete="off"
+    >
+
 
       <!-- Student ID -->
 
-      <label class="field-label" for="student-id">
+      <label
+        class="field-label"
+        for="student-id"
+      >
         Student ID
       </label>
+
 
       <input
         type="text"
@@ -57,11 +89,18 @@
 
       <!-- Personal Code -->
 
-      <label class="field-label" for="code-display">
+      <label
+        class="field-label"
+        for="code-display"
+      >
         Personal code
       </label>
 
-      <div class="code-display" id="code-display">
+
+      <div
+        class="code-display"
+        id="code-display"
+      >
 
         <span
           class="code-dot"
@@ -90,17 +129,71 @@
 
       <div class="keypad">
 
-        <button type="button" class="key digit">1</button>
-        <button type="button" class="key digit">2</button>
-        <button type="button" class="key digit">3</button>
+        <button
+          type="button"
+          class="key digit"
+        >
+          1
+        </button>
 
-        <button type="button" class="key digit">4</button>
-        <button type="button" class="key digit">5</button>
-        <button type="button" class="key digit">6</button>
+        <button
+          type="button"
+          class="key digit"
+        >
+          2
+        </button>
 
-        <button type="button" class="key digit">7</button>
-        <button type="button" class="key digit">8</button>
-        <button type="button" class="key digit">9</button>
+        <button
+          type="button"
+          class="key digit"
+        >
+          3
+        </button>
+
+
+        <button
+          type="button"
+          class="key digit"
+        >
+          4
+        </button>
+
+        <button
+          type="button"
+          class="key digit"
+        >
+          5
+        </button>
+
+        <button
+          type="button"
+          class="key digit"
+        >
+          6
+        </button>
+
+
+        <button
+          type="button"
+          class="key digit"
+        >
+          7
+        </button>
+
+        <button
+          type="button"
+          class="key digit"
+        >
+          8
+        </button>
+
+        <button
+          type="button"
+          class="key digit"
+        >
+          9
+        </button>
+
 
         <button
           type="button"
@@ -110,7 +203,12 @@
           C
         </button>
 
-        <button type="button" class="key digit">0</button>
+        <button
+          type="button"
+          class="key digit"
+        >
+          0
+        </button>
 
         <button
           type="button"
@@ -123,7 +221,7 @@
       </div>
 
 
-      <!-- Message -->
+      <!-- Login Message -->
 
       <p
         class="message"
@@ -147,6 +245,7 @@
   </main>
 
 
+
   <!-- =========================================================
        STUDENT DASHBOARD
   ========================================================== -->
@@ -156,110 +255,209 @@
     style="display: none;"
   >
 
-    <h1>
-      Student Dashboard
-    </h1>
+
+    <!-- Dashboard Header -->
+
+    <header>
+
+      <h1>
+        Student Dashboard
+      </h1>
+
+      <p>
+        Welcome to HABLOCLASS.
+      </p>
+
+    </header>
 
 
-    <!-- Student Information -->
 
-    <div>
+    <!-- =======================================================
+         STUDENT INFORMATION
+    ======================================================== -->
+
+    <section>
+
+      <h2>
+        Student Information
+      </h2>
+
 
       <p>
         Student Name:
-        <strong id="dashboard-name">—</strong>
+        <strong id="dashboard-name">
+          —
+        </strong>
       </p>
+
 
       <p>
         Student ID:
-        <strong id="dashboard-id">—</strong>
+        <strong id="dashboard-id">
+          —
+        </strong>
       </p>
+
 
       <p>
         Cohort:
-        <strong id="dashboard-cohort">—</strong>
+        <strong id="dashboard-cohort">
+          —
+        </strong>
       </p>
+
 
       <p>
         Year:
-        <strong id="dashboard-year">—</strong>
+        <strong id="dashboard-year">
+          —
+        </strong>
       </p>
 
-    </div>
+    </section>
 
-
-    <hr>
-
-
-    <!-- Current Course -->
-
-    <h2>
-      Current Course
-    </h2>
-
-    <p>
-      Course:
-      <strong>English &amp; Communication</strong>
-    </p>
-
-    <p>
-      Level:
-      <strong>Beginner</strong>
-    </p>
-
-    <p>
-      Progress:
-      <strong>0%</strong>
-    </p>
 
 
     <hr>
 
 
-    <!-- Course Modules -->
 
-    <h2>
-      Course Modules
-    </h2>
+    <!-- =======================================================
+         CURRENT COURSE
+    ======================================================== -->
 
-    <div class="course-modules">
+    <section>
 
-      <a href="#" class="course-link">
-        English Foundations
-      </a>
+      <h2>
+        Current Course
+      </h2>
 
-      <a href="#" class="course-link">
-        Speaking Practice
-      </a>
 
-      <a href="#" class="course-link">
-        Reading &amp; Comprehension
-      </a>
+      <p>
+        Course:
+        <strong>
+          English &amp; Communication
+        </strong>
+      </p>
 
-      <a href="#" class="course-link">
-        Vocabulary
-      </a>
 
-      <a href="#" class="course-link">
-        Discussion &amp; Debate
-      </a>
+      <p>
+        Level:
+        <strong>
+          Beginner
+        </strong>
+      </p>
 
-      <a href="#" class="course-link">
-        Public Speaking
-      </a>
 
-      <a href="#" class="course-link">
-        Coding &amp; Digital Skills
-      </a>
+      <p>
+        Progress:
+        <strong>
+          0%
+        </strong>
+      </p>
 
-    </div>
+    </section>
+
+
+
+    <hr>
+
+
+
+    <!-- =======================================================
+         COURSE MODULES
+    ======================================================== -->
+
+    <section>
+
+      <h2>
+        Course Modules
+      </h2>
+
+
+      <div class="course-modules">
+
+
+        <!-- English Foundation -->
+
+        <a
+          href="courses/english1.html"
+          class="course-link"
+        >
+          English Foundations
+        </a>
+
+
+
+        <!-- Speaking Practice -->
+
+        <a
+          href="courses/english1.html"
+          class="course-link"
+        >
+          Speaking Practice
+        </a>
+
+
+
+        <!-- Future modules -->
+
+        <a
+          href="#"
+          class="course-link"
+        >
+          Reading &amp; Comprehension
+        </a>
+
+
+        <a
+          href="#"
+          class="course-link"
+        >
+          Vocabulary
+        </a>
+
+
+        <a
+          href="#"
+          class="course-link"
+        >
+          Discussion &amp; Debate
+        </a>
+
+
+        <a
+          href="#"
+          class="course-link"
+        >
+          Public Speaking
+        </a>
+
+
+        <a
+          href="#"
+          class="course-link"
+        >
+          Coding &amp; Digital Skills
+        </a>
+
+      </div>
+
+    </section>
+
 
   </section>
 
 
-  <!-- JavaScript -->
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
 
   <script src="script.js"></script>
 
+
 </body>
+
 </html>
+

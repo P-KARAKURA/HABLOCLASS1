@@ -43,7 +43,28 @@ const students = [
   {
     id: "0302612",
     code: "0784",
-    name: "BARAKA EVAN",
+    name: "FAIDA NIYONAGIZE",
+    cohort: "03",
+    year: "2026"
+  },
+    {
+    id: "0302632",
+    code: "0395",
+    name: "CLAUDE KWIZERA",
+    cohort: "03",
+    year: "2026"
+  },
+  {
+    id: "0302633",
+    code: "9947",
+    name: "ALEX M-PACK",
+    cohort: "03",
+    year: "2026"
+  },
+  {
+    id: "0302634",
+    code: "3681",
+    name: "UWAJENEZA ADELINE",
     cohort: "03",
     year: "2026"
   }

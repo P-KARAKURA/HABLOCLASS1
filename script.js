@@ -67,6 +67,13 @@ const students = [
     name: "UWAJENEZA ADELINE",
     cohort: "03",
     year: "2026"
+  },
+    {
+    id: "0102602",
+    code: "1235",
+    name: "Elie, PHOTOGRAPHER",
+    cohort: "03",
+    year: "2026"
   }
 
 ];

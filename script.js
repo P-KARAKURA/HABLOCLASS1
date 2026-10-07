@@ -21,7 +21,7 @@ const students = [
     id: "0202607",
     code: "4821",
     name: "MUSERUKA AIME SERGE",
-    cohort: "02",
+    cohort: "01",
     year: "2026"
   },
 
@@ -29,7 +29,7 @@ const students = [
     id: "0302610",
     code: "0784",
     name: "CHRISTINE BORA",
-    cohort: "03",
+    cohort: "01",
     year: "2026"
   },
   {
@@ -44,21 +44,21 @@ const students = [
     id: "0302612",
     code: "0784",
     name: "FAIDA NIYONAGIZE",
-    cohort: "03",
+    cohort: "01",
     year: "2026"
   },
     {
     id: "0302632",
     code: "0395",
     name: "CLAUDE KWIZERA",
-    cohort: "03",
+    cohort: "01",
     year: "2026"
   },
   {
     id: "0302633",
     code: "9947",
     name: "ALEX M-PACK",
-    cohort: "03",
+    cohort: "01",
     year: "2026"
   },
   {
@@ -72,7 +72,14 @@ const students = [
     id: "0102602",
     code: "1235",
     name: "Elie, PHOTOGRAPHER",
-    cohort: "03",
+    cohort: "01",
+    year: "2026"
+  },
+     {
+    id: "0102687",
+    code: "2587",
+    name: "KAHITE SAM",
+    cohort: "01",
     year: "2026"
   }
 
